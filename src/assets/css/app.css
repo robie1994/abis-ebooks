@@ -1,0 +1,917 @@
+@import "bootstrap/dist/css/bootstrap.min.css";
+@import url('https://fonts.googleapis.com/css2?family=Roboto&amp;display=swap&apos');
+
+
+html,
+body {
+    font-family: 'Courier New', monospace;
+    height: 100%;
+    width: 100%;
+}
+input[type=text] {
+    cursor: pointer;
+}
+/* ============================== START OF HEADERS ============================== */
+.appHeader {
+    border: 2px solid #8b6132;
+    background-color: rgb(235, 235, 235);
+    width: 100% !important;
+}
+
+.table-logo-header {
+    width: 100%;
+}
+
+.headerIcon {
+    padding-bottom: 10px !important;
+}
+
+.appHeaderText {
+    width: 70%;
+}
+
+.appHeaderText p {
+    margin-top: 15px;
+    font-weight: 600;
+    font-size: 34px;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.29;
+    letter-spacing: normal;
+    text-align: left;
+    color: #8b6132;
+}
+
+.appHeaderLogo {
+    padding: 15px;
+    width: 50px;
+}
+
+.appHeaderLogo img {
+    width: 60px;
+}
+.header-welcome-text{
+    padding-top: 15px;
+    font-weight: 600;
+}
+
+/* ============================== END OF HEADERS ============================== */
+
+/* ============================== START OF FOOTER ============================== */
+.appFooter {
+    height: 1%;
+    padding: 20px 0 10px 0;
+    border: 2px solid #8b6132;
+    background-color: rgb(235, 235, 235);
+    font-weight: 900;
+    font-size: 12px;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.29;
+    letter-spacing: normal;
+    text-align: left;
+    color: #2e8adc;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    opacity: 1;
+}
+
+.table-footer {
+    text-align: center;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+}
+
+.appFooter td {
+    width: 20%;
+    height: 100%;
+}
+
+.link-icon {
+    padding: 3px;
+    width: 30px;
+    height: 30px;
+    margin-bottom: 5px;
+}
+
+a {
+    text-decoration: none;
+    color: #2e8adc;
+}
+
+/* ============================== END OF FOOTER ============================== */
+
+
+/* ==== START OF APP CONTENT ==== */
+.main-content-right-div{
+    height: 100%;
+}
+.appHomePage {
+    width: 100%;
+}
+
+.home-main-content {
+    width: 100%;
+    height: 100%;
+}
+
+.main-content-left {
+    width: 40%;
+    padding: 50px 0 50px 50px; 
+}
+
+.main-content-left img{
+    width: 90%;
+    height: 100%;
+    border: 2px solid #8b6132;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;}
+
+.main-content-right {
+    width: 60%;
+    padding: 50px 50px 50px 0; 
+}
+.main-content-right img{
+    width: 500px;
+    height: 200px;
+    border: 2px solid #8b6132;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 40px 4px;
+}
+
+.main-content-right-image-wrapper{
+    text-align: center;
+    margin-bottom: 45px;
+    
+}
+.home-signup-btn{
+    margin: auto;
+    width: 250px;
+    border: 2px solid black;
+    border-radius: 4px;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.caption-text h3 {
+    color: rgb(0, 69, 126);
+    font-weight: 600;
+}
+
+.caption-text img {
+    width: 550px;
+    height: 250px;
+    border: 1px solid black;
+}
+
+.abis-image {
+    width: 550px;
+    height: 350px !important;
+    border: 1px solid black !important;
+    margin: -5px 5px 5px 5px;
+}
+
+.caption-header {
+    font-size: 50px;
+    margin-top: 155px;
+    color: white;
+}
+
+.caption-text {
+    padding: 15px;
+    font-size: 14px;
+}
+
+.caption-text h3 {
+    padding: 15px;
+    border-bottom: 2px solid gray;
+}
+
+.caption-span {
+    color: rgb(0, 69, 126);
+    font-size: 18px;
+}
+
+.caption {
+    bottom: 150px;
+    left: 250px;
+    color: #8b6132;
+}
+
+/* START OF SIGNUP PAGE */
+.signup-page {
+    height: 100%;
+    width: 100%;
+    background-color: aliceblue;
+    /* background-image: url('../images/abis-bg1.jpg'); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: fixed;
+}
+
+.abisLogo-signup {
+    float: right;
+    margin-right: 360px;
+}
+
+.signup-modal-message {
+    margin-top: 220px;
+}
+
+.signup-modal-body {
+    padding: 25px 25px 15px 25px;
+}
+
+.signup-wrapper {
+    height: 77%;
+    margin: auto;
+    margin-top: 25px;
+    width: 520px;
+    border-radius: 20px;
+    border: 2px solid black;
+}
+
+.signup-image {
+    height: 100%;
+    width: 500px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    text-align: right;
+    grid-column: 4/6;
+    background-color: rgb(235, 235, 235);
+    height: 100% !important;
+    overflow-x: hidden !important;
+    overflow-y: hidden !important;
+}
+
+.signup-image img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15%;
+    width: 100%;
+    height: 80%;
+
+}
+.text-changepassword{
+    margin: 5px;
+}
+.text-changepassword-error{
+    color: red;
+    font-size: 12px;
+}
+
+.signup-form {
+    height: 100% !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    text-align: left;
+    grid-column: 1/4;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    padding: 25px;
+    width: 500px;
+    background-color: aliceblue;
+}
+
+.tdRegisterBtn {
+    text-align: center;
+}
+
+.registerBtn {
+    width: 300px;
+    cursor: pointer !important;
+}
+
+.registerBtn:disabled {
+    background-color: darkgrey;
+    cursor: not-allowed !important;
+}
+
+.signup-textbox {
+    width: 100%;
+}
+
+.signup-dropdown {
+    width: 305px;
+}
+
+/* END OF SIGNUP PAGE */
+
+/* START OF LOGIN PAGE */
+.login-page {
+    height: 100%;
+    width: 100%;
+    background-color: aliceblue;
+    background-image: url('../images/abis-bg1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: fixed;
+}
+
+.login-form {
+    border: 1px solid #8b6132;
+    border-radius: 4px;
+    padding: 25px;
+    height: 550px;
+    width: 400px;
+    margin: auto;
+    margin-top: -20px;
+    background-color: aliceblue;
+    overflow: auto;
+}
+
+.login-logo-row {
+    border-bottom: 1px solid #8b6132;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.loginBtn {
+    margin: auto;
+    background-color: #2e8adc;
+    color: white;
+    border-radius: 4px;
+    width: 80%;
+    height: 40px;
+    cursor: pointer;
+}
+.loginBtn:disabled {
+    background-color: #777a7e;
+    color: white;
+    cursor: not-allowed;
+}
+
+.login-logo {
+    width: 80px;
+    margin: auto;
+}
+.forgot-password-link{
+    color: blue;
+    cursor: pointer;
+}
+.captcha{
+    background-color: #ccccdf;
+    width: 300px;
+    height: 120px;
+    font-family: '&apos;Roboto&apos;, sans-serif';
+}
+.captcha table{
+    width: 100%;
+}
+.captcha-reload img{
+    width: 25px;
+    height: 25px;
+    margin-top: 35%;
+    border: none;
+    cursor: pointer;
+}
+.captcha-reload:hover div{
+    background-color: aliceblue;
+}
+.captcha-reload{
+    width: 20%;
+    padding-right: 10px;
+}
+.captcha-reload div{
+    margin-top: 5px;
+    height: 60px !important;
+    background-color: white;
+    border-radius: 8px;
+}
+.captcha-code{
+    padding: 10px 10px 5px 10px;
+    height: 70px;
+    width: 80%;
+    font-size: 40px;
+    font-style: italic; 
+}
+.captcha-code div{
+    margin: auto;
+    height: 60px !important;
+    background-color: white;
+    border-radius: 8px;
+}
+.captcha-field-td{
+    width: 100%;
+    padding: 5px;
+}
+.captcha-textbox{
+    width: 95%;
+    font-family: 'Courier New', monospace;
+    border-radius: 4px;
+    border: none;
+    padding: 5px;
+}
+/* END OF LOGIN PAGE */
+
+/* USER PROFILE */
+.stdnt-dashboard-page {
+    height: 100%;
+    margin: auto;
+    margin-top: 55px;
+}
+
+.stdnt-dashboard-form {
+    width: 100%;
+    border: 1px solid #8b6132;
+    border-radius: 4px;
+    padding: 25px;
+    background-color: white;
+    margin-top: -50px;
+    height: 100%;
+}
+
+.div-user-profile {
+    border: 1px solid rgb(216, 212, 212);
+    width: 30%;
+}
+
+.table-user-profile {
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
+.stdnt-dashboard-wrapper {
+    width: 100%;
+}
+
+.td-label {
+    min-width: 230px;
+}
+
+.profile-td {
+    width: 60%;
+    max-height: 41px;
+    overflow: auto;
+}
+
+.profile-td div {
+    width: 100%;
+    max-height: 41px;
+    overflow: auto;
+}
+
+.div-borrowed-books-data {
+    border: 1px solid rgb(216, 212, 212);
+    width: 65%;
+    min-height: 500px;
+}
+
+.current-borrowed-books-div {
+    height: 305px;
+    overflow: auto;
+    border: 1px solid rgb(216, 212, 212);
+}
+
+.table-borrowed-books {
+    border: 1px solid rgb(216, 212, 212);
+    height: 100%;
+
+}
+
+.table-student-books-data {
+    border: 1px solid rgb(216, 212, 212);
+    height: 10%;
+}
+
+.img-userProfile {
+    width: 120px;
+}
+
+.align-center {
+    text-align: center;
+}
+
+.user-profile-btn {
+    width: 250px;
+    height: 50px;
+}
+
+.stdnt-activity-img {
+    width: 75px;
+    height: 75px;
+}
+
+.stdnt-activity-td {
+    width: 50%;
+}
+
+.stdnt-activity-td {
+    padding: 25px 30px;
+    color: #03e9f4;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.5s;
+    letter-spacing: 4px;
+    overflow: hidden;
+    margin-right: 50px;
+    cursor: pointer;
+}
+
+.stdnt-activity-td:hover {
+    background: rgb(182, 163, 163);
+    color: #050801;
+}
+
+.stdnt-activity-td:nth-child(1) {
+    filter: hue-rotate(270deg);
+}
+
+.stdnt-activity-td:nth-child(2) {
+    filter: hue-rotate(110deg);
+}
+
+.stdnt-activity-td span {
+    position: absolute;
+    display: block;
+}
+
+.stdnt-activity-td span:nth-child(1) {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #03e9f4);
+    animation: animate1 1s linear infinite;
+}
+
+@keyframes animate1 {
+    0% {
+        left: -100%;
+    }
+
+    50%,
+    100% {
+        left: 100%;
+    }
+}
+
+.stdnt-activity-td span:nth-child(2) {
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, #03e9f4);
+    animation: animate2 1s linear infinite;
+    animation-delay: 0.25s;
+}
+
+@keyframes animate2 {
+    0% {
+        top: -100%;
+    }
+
+    50%,
+    100% {
+        top: 100%;
+    }
+}
+
+.stdnt-activity-td span:nth-child(3) {
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(270deg, transparent, #03e9f4);
+    animation: animate3 1s linear infinite;
+    animation-delay: 0.50s;
+}
+
+@keyframes animate3 {
+    0% {
+        right: -100%;
+    }
+
+    50%,
+    100% {
+        right: 100%;
+    }
+}
+
+
+.stdnt-activity-td span:nth-child(4) {
+    bottom: -100%;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(360deg, transparent, #03e9f4);
+    animation: animate4 1s linear infinite;
+    animation-delay: 0.75s;
+}
+
+@keyframes animate4 {
+    0% {
+        bottom: -100%;
+    }
+
+    50%,
+    100% {
+        bottom: 100%;
+    }
+}
+
+.update-user-sm {
+    width: 50px;
+    margin: 2px 0 2px 0;
+}
+
+.update-user-med {
+    width: 180px;
+    margin: 2px 0 2px 0;
+}
+
+.update-user-med-fn {
+    width: 180px;
+    margin: 2px 2px 2px 0;
+}
+
+.update-user-lg {
+    width: 350px;
+    margin: 2px 0 2px 0;
+}
+
+.update-profile-btn {
+    margin: 0 5px 0 5px;
+    width: 150px;
+}
+.update-profile-validation{
+    color: red;
+}
+
+.user-grade-level-dropdown {
+    margin-right: 5px;
+    height: 29px;
+}
+
+.student-dashboard-box1 {
+    height: 60px;
+    background-color: rgb(2, 2, 59) !important;
+    font-size: 30px;
+    color: white !important;
+}
+
+.student-dashboard-box2 {
+    height: 60px;
+    background-color: rgb(38, 139, 38) !important;
+    font-size: 30px;
+    color: white !important;
+}
+
+.student-dashboard-box3 {
+    height: 60px;
+    color: white !important;
+    font-size: 30px;
+    background-color: rgb(119, 11, 11) !important;
+}
+
+.colored {
+    background-color: aliceblue;
+    color: rgb(0, 69, 126);
+}
+
+/* END OF USER PROFILE */
+
+.request-borrow-book-modal {
+    width: 1198px;
+    max-width: 1198px;
+    height: 635px;
+    overflow: auto;
+}
+
+.request-borrow-book-btn {
+    width: 100px;
+}
+
+.request-borrow-book-table {
+    width: 1150px;
+}
+
+.request-borrow-bookname {
+    width: 550px;
+}
+
+.request-borrow-bookauthor {
+    width: 350px;
+}
+
+.request-borrow-bookcategory {
+    width: 200px;
+}
+
+.borrow-confirmBtn {
+    margin: 0 10px 0 10px;
+}
+
+.pending-request-status {
+    width: 150px;
+}
+
+.admin-dashboard-page {
+    max-width: 1430px;
+    height: 1000px;
+    margin: auto;
+    padding: 10px 0 25px;
+}
+
+.admin-dashboard-form {
+    min-width: 1430px;
+    height: 600px;
+    border: 1px solid #8b6132;
+    border-radius: 4px;
+    padding: 25px;
+}
+
+.loggedin-as-admin {
+    border: 1px solid #8b6132;
+    padding: 5px 15px;
+    background-color: rgb(235, 235, 235);
+}
+
+.div-admin-dashboard {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.table-admin-dashboard {
+    width: 100%;
+    background-color: white;
+    margin: auto;
+}
+
+.table1-admin-dashboard {
+    width: 100%;
+    margin: auto;
+    border: 1px solid aliceblue;
+}
+
+.table1-td-wrapper {
+    border: 1px solid #8b6132;
+    padding: 10px;
+    background-color: rgb(235, 235, 235);
+    text-align: left;
+    width: 215px;
+    height: 130px;
+}
+.stats-numbers{
+    font-size: 122 !important;
+}
+.stats-label{
+    font-size: 16px;
+}
+
+.admin-dashboard-icons {
+    width: 120;
+    height: 90px;
+    padding: 5px;
+}
+
+
+/* COMMENT */
+.admin-dashboard-btn2 {
+    width: 200px;
+}
+.admin-dashboard-btn {
+    width: 200px;
+    height: 60px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1.3px;
+    font-weight: 700;
+    color: #313133;
+    background-color: #2e8adc;
+    background: linear-gradient(90deg, #2e8adc 0%, #2e8adc 100%); 
+    color: white;
+    border: none;
+    border-radius: 1000px;
+    box-shadow: 12px 12px 24px rgba(79, 209, 197, .64);
+    transition: all 0.3s ease-in-out 0s;
+    cursor: pointer;
+    outline: none;
+    position: relative;
+    padding: 10px;
+}
+
+.admin-dashboard-btn::before {
+    content: '';
+    border-radius: 1000px;
+    width: 200px;
+    height: 60px;
+    border: 6px solid #00FFCB;
+    box-shadow: 0 0 60px rgba(0, 255, 203, .64);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: all .3s ease-in-out 0s;
+}
+
+.admin-dashboard-btn:hover,
+.button:focus {
+    color: #313133;
+    transform: translateY(-6px);
+}
+
+.admin-dashboard-btn:hover::before,
+.admin-dashboard-btn:focus::before {
+    opacity: 1;
+}
+
+.admin-dashboard-btn::after {
+    content: '';
+    width: 200px;
+    height: 60px;
+    border-radius: 100%;
+    border: 6px solid #00FFCB;
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: ring 1.5s infinite;
+}
+
+.admin-dashboard-btn:hover::after,
+button:focus::after {
+    animation: none;
+    display: none;
+}
+
+@keyframes ring {
+    0% {
+        width: 30px;
+        height: 30px;
+        opacity: 1;
+    }
+
+    100% {
+        width: 300px;
+        height: 300px;
+        opacity: 0;
+    }
+}
+
+/* END COMMENT */
+
+.manage-book-request {
+    width: 1400px;
+    max-width: 1400px;
+    height: 780px;
+    overflow: auto;
+}
+
+.manage-book-request-table {
+    width: 100%;
+}
+
+.adminDashboard-lrn {
+    width: 150px;
+}
+
+.adminDashboard-name {
+    width: 250px;
+}
+
+.adminDashboard-bookId {
+    width: 100px;
+}
+
+.book-management-actions {
+    text-align: center;
+}
+
+.approvedbooks-status {
+    width: 300px;
+}
+
+.adminDashboard-bookId2 {
+    width: 200px;
+}
+
+.add-book {
+    margin-left: 15px;
+}
+
+.adminDashboard-modalHeader-search-label {
+    padding: 0 10px 0 250px;
+    font-size: 14px;
+}
+
+.adminDashboard-modalHeader-search {
+    font-size: 14px;
+}
+
+.adminDashboard-modalHeader-search input {
+    width: 250px;
+}
+.resetpassword{
+    /* padding: 5px; */
+    margin: 5px;
+}
+/* ==== END OF APP CONTENT ==== */
