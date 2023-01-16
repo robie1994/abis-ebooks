@@ -51,12 +51,12 @@ const Header = () => {
                 <Navbar.Collapse id="basic-navbar-nav">
                   <Nav className="me-auto">
                     <Nav.Link href="/">HOME</Nav.Link>
+                    {isLoggedIn ? <Nav.Link href="/e-books">E-BOOKS</Nav.Link> : null}
                     {isLoggedIn ? <Nav.Link href={isAdmin ? '/admin-dashboard' : '/student-dashboard'}>DASHBOARD</Nav.Link> : <Nav.Link href="/signup">REGISTER </Nav.Link>}
                     {isLoggedIn ? null : <Nav.Link href="/login">LOGIN</Nav.Link>}
-
+                    <Nav.Link href="https://abis.depedmandaluyong.org/about" target="_blank">ABOUT US</Nav.Link>
+                    <Nav.Link href="https://abis.depedmandaluyong.org/contact-us" target="_blank">CONTACT US</Nav.Link>
                     {isLoggedIn ? <Nav.Link href="/" onClick={() => { localStorage.setItem('userData', JSON.stringify([])); setIsLoggedIn(false) }}>LOGOUT</Nav.Link> : null}
-                    <Nav.Link href="https://abis.depedmandaluyong.org/about" target="_blank">About Us</Nav.Link>
-                    <Nav.Link href="https://abis.depedmandaluyong.org/contact-us" target="_blank">Contact Us</Nav.Link>
                   </Nav>
                 </Navbar.Collapse>
               </Navbar>

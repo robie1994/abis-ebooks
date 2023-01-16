@@ -27,9 +27,8 @@ input[type=text] {
 }
 
 .appHeaderText {
-    width: 70%;
+    width: 60%;
 }
-
 .appHeaderText p {
     margin-top: 15px;
     font-weight: 600;
@@ -429,7 +428,6 @@ a {
 
 .div-user-profile {
     border: 1px solid rgb(216, 212, 212);
-    width: 30%;
 }
 
 .table-user-profile {
@@ -438,7 +436,8 @@ a {
 }
 
 .stdnt-dashboard-wrapper {
-    width: 100%;
+    width: 50%;
+    margin: auto;
 }
 
 .td-label {
@@ -677,6 +676,43 @@ a {
 
 /* END OF USER PROFILE */
 
+/* START OF E-BOOKS PAGE */
+.e-books-page{
+    padding: 20px;
+    height: 750px;
+}
+.search-ebook-wrapper{
+    text-align: center;
+}
+.search-ebook-wrapper input[type="text"] {
+    width: 300px;
+    margin: 5px;
+    cursor: text;
+}
+.ebooks-wrapper{
+    margin-top: 25px;
+}
+.ebooks-table{
+    margin-top: 20px;
+    height: 100%;
+    width: 100%;
+    margin: auto;
+}
+
+.individual-ebook-wrapper{
+    margin: auto;
+    width: 250px;
+    border: 2px solid black;
+    height: 100%;
+    text-align: center;
+}
+.individual-ebook-wrapper img {
+    margin-top: 15px;
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+}
+/* END OF E-BOOKS PAGE */
 .request-borrow-book-modal {
     width: 1198px;
     max-width: 1198px;
@@ -773,6 +809,35 @@ a {
 
 
 /* COMMENT */
+.admin-dashboard-btn3 {
+    width: 30px;
+    cursor: pointer;
+}
+.admin-dashboard-btn4 {
+    background-color: transparent;
+    border: none;
+    color: black;
+    font-size: 17px;
+    cursor: pointer;
+}
+.admin-dashboard-btn4:disabled {
+    background-color: transparent;
+    border: none;
+    color: black;
+    font-size: 17px;
+    cursor: pointer;
+}
+.admin-dashboard-btn4:hover {
+    background-color: transparent;
+    border: none;
+    color: rgb(164, 164, 228);
+    font-size: 17px;
+    cursor: pointer;
+}
+.book-edit-long-tb[type=text] {
+    width: 600px;
+    max-width: 600px;
+}
 .admin-dashboard-btn2 {
     width: 200px;
 }
