@@ -403,9 +403,6 @@ const changePassword = () => {
                       </tr>
                       <tr>
                         <td colSpan="2" className="align-center"><Button className="align-center" onClick={() => setShowChangePassword(true)}>CHANGE PASSWORD</Button></td>
-                        {/* <td>
-                          <input type="password" className="update-user-lg" value={password} onChange={event => {setPassword(event.target.value)}} />
-                        </td> */}
                       </tr>
                       <tr className="align-center">
                         <td colSpan="2">
@@ -416,81 +413,6 @@ const changePassword = () => {
                     </tbody>
                   </Table>
                 )}
-              </td>
-              <td className="div-borrowed-books-data">
-                <Table className="table-student-books-data" striped bordered>
-                  <thead>
-                    <tr className="align-center">
-                      <th>Book/s On Hand</th>
-                      <th>Pending Request/s</th>
-                      <th>Past Due Transactions</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td className="student-dashboard-box1">{studentCurrentBorrowedBooks.length ? studentCurrentBorrowedBooks.length : 0}</td>
-                      <td className="student-dashboard-box2">{studentPendingRequest.length ? studentPendingRequest.length : 0}</td>
-                      <td className="student-dashboard-box3">{pastDueList ? pastDueList.length : 0}</td>
-                    </tr>
-                  </tbody>
-                </Table>
-                <Table className="table-borrowed-books" striped bordered hover>
-                  <thead>
-                    <tr className="align-center colored">
-                      <th colSpan="2">What do you want to do today?</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr className="align-center">
-                      <td className="stdnt-activity-td" onClick={() => setShowRequestBookModal(true)}>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <img className="stdnt-activity-img" src={borrowABook} /><br />
-                        Request to Borrow Book/s
-                      </td>
-                      <td className="stdnt-activity-td" onClick={() => setShowPendingRequestModal(true)}>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <img className="stdnt-activity-img" src={pendingRequest} /><br />
-                        View Pending Request/s
-                      </td>
-                    </tr>
-                  </tbody>
-                </Table>
-
-                <div className="current-borrowed-books-div">
-                  <Table striped>
-                    <thead>
-                      <tr className="align-center">
-                        <th colSpan="5">
-                          CURRENT BORRWED BOOK/S
-                        </th>
-                      </tr>
-                      <tr>
-                        <th>#</th>
-                        <th>Title</th>
-                        <th>Category</th>
-                        <th>Date Borrowed</th>
-                        <th>Due Date</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {studentCurrentBorrowedBooks.length ? studentCurrentBorrowedBooks.map((borrowedBook) => (
-                        <tr key={borrowedBook.BookID}>
-                          <td>{(studentCurrentBorrowedBooks.indexOf(borrowedBook)) + 1}</td>
-                          <td>{borrowedBook.BookName}</td>
-                          <td>{borrowedBook.BookCategory}</td>
-                          <td>{borrowedBook.BorrowedDate}</td>
-                          <td>{borrowedBook.DueDate}</td>
-                        </tr>
-                      )) : null}
-                    </tbody>
-                  </Table>
-                </div>
               </td>
             </tr>
           </tbody>

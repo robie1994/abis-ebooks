@@ -11,6 +11,8 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import axios from "axios";
+import { FaRegEdit,FaTrashAlt, FaCheck, FaWindowClose } from 'react-icons/fa';
+
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -143,7 +145,7 @@ const DashboardAdmin = () => {
   };
   const getAllBooks = () => {
     axios({
-      url: "http://localhost/api-abis-ls/books.php",
+      url: "http://localhost/api-abis-ls/ebooks.php",
       method: "get"
     })
       .then(res => {
@@ -280,14 +282,14 @@ const DashboardAdmin = () => {
     }
   };
   const updateBook = id => {
-    let book = allBookList.find(x => x.BookID === id);
+    let book = allBookList.find(x => x.EbookID === id);
     if (window.confirm("Do you really want to update book : " + id + "?")) {
       axios
-        .post("http://localhost/api-abis-ls/book-update.php", {
+        .post("http://localhost/api-abis-ls/ebook-update.php", {
           id,
-          name: book.BookName,
-          author: book.Author,
-          category: book.BookCategory
+          ebookname: book.EbookName,
+          ebookurl: book.EbookUrl,
+          imageurl: book.EbookImageUrl
         })
         .then(() => {
           window.location.reload();
@@ -297,10 +299,10 @@ const DashboardAdmin = () => {
   const createBook = book => {
     if (window.confirm("Do you really want to create book : ?")) {
       axios
-        .post("http://localhost/api-abis-ls/book-create.php", {
-          name: book.BookName,
-          author: book.Author,
-          category: book.BookCategory
+        .post("http://localhost/api-abis-ls/ebook-create.php", {
+          ebookname: book.EbookName,
+          ebookurl: book.EbookUrl,
+          imageurl: book.EbookImageUrl
         })
         .then(() => {
           window.location.reload();
@@ -312,7 +314,7 @@ const DashboardAdmin = () => {
       window.confirm("Do you really want to delete this book : " + id + "?")
     ) {
       axios
-        .post("http://localhost/api-abis-ls/book-delete.php", {
+        .post("http://localhost/api-abis-ls/ebook-delete.php", {
           id
         })
         .then(() => {
@@ -348,7 +350,7 @@ const DashboardAdmin = () => {
     const arr = [];
     if (e.target.value.length) {
       allBookList.map((books) => {
-        const bookName = books.BookName.toLowerCase();
+        const bookName = books.EbookName.toLowerCase();
         if (bookName.includes(e.target.value.toLowerCase())) {
           arr.push(books)
         }
@@ -680,7 +682,7 @@ const DashboardAdmin = () => {
             className="add-book"
             onClick={() => {
               let books = [...filteredAllBookList];
-              books.unshift({ BookName: "", Author: "", isEdit: true });
+              books.unshift({ EbookName: "", EbookUrl: "", EbookImageUrl:"", isEdit: true });
               setFilteredAllBookList(books);
             }}
           >
@@ -694,10 +696,9 @@ const DashboardAdmin = () => {
             <thead>
               <tr className="align-center">
                 <th className="adminDashboard-bookId">BOOK ID</th>
-                <th className="adminDashboard-name">BOOK NAME</th>
-                <th className="request-borrow-name">AUTHOR</th>
-                <th className="request-borrow-name">CATEGORY</th>
-                <th className="pending-request-status">STATUS</th>
+                <th className="adminDashboard-name">IMAGE URL</th>
+                <th className="request-borrow-name">E-BOOK NAME</th>
+                <th className="request-borrow-name">E-BOOK URL</th>
                 <th colSpan="2" className="pending-request-status">
                   ACTIONS
                 </th>
@@ -708,17 +709,18 @@ const DashboardAdmin = () => {
                 if (values.isEdit)
                   return (
                     <tr>
-                      <td>{values.BookID}</td>
+                      <td>{values.EbookID}</td>
                       <td>
                         <Form.Control
+                          className="book-edit-long-tb"
                           type="text"
-                          placeholder="Enter Book Name"
-                          value={values.BookName}
+                          placeholder="Enter Image URL"
+                          value={values.EbookImageUrl}
                           onChange={e => {
                             let books = [...filteredAllBookList];
                             books.find(
-                              x => x.BookID === values.BookID
-                            ).BookName = e.target.value;
+                              x => x.EbookID === values.EbookID
+                            ).EbookImageUrl = e.target.value;
                             setFilteredAllBookList(books);
                           }}
                         />
@@ -726,11 +728,11 @@ const DashboardAdmin = () => {
                       <td>
                         <Form.Control
                           type="text"
-                          placeholder="Enter Book Author"
-                          value={values.Author}
+                          placeholder="Enter Book Title"
+                          value={values.EbookName}
                           onChange={e => {
                             let books = [...filteredAllBookList];
-                            books.find(x => x.BookID === values.BookID).Author =
+                            books.find(x => x.EbookID === values.EbookID).EbookName =
                               e.target.value;
                             setFilteredAllBookList(books);
                           }}
@@ -739,37 +741,34 @@ const DashboardAdmin = () => {
                       <td>
                         <Form.Control
                           type="text"
-                          placeholder="Enter Book Category"
-                          value={values.BookCategory}
+                          placeholder="Enter E-Book URL"
+                          value={values.EbookUrl}
                           onChange={e => {
                             let books = [...filteredAllBookList];
-                            books.find(x => x.BookID === values.BookID).BookCategory = e.target.value;
+                            books.find(x => x.EbookID === values.EbookID).EbookUrl = e.target.value;
                             setFilteredAllBookList(books);
                           }}
                         />
                       </td>
-                      <td>{values.Availability}</td>
                       <td className="book-management-actions">
-                        <Button
-                          className="admin-dashboard-btn2"
+                        <FaCheck
+                          className="admin-dashboard-btn3"
                           variant="success"
                           onClick={() => {
-                            if (values.BookID) updateBook(values.BookID);
+                            if (values.EbookID) updateBook(values.EbookID);
                             else createBook(values);
                           }}
-                        >
-                          SAVE
-                        </Button>
+                        />
                       </td>
                       <td className="book-management-actions">
-                        <Button
-                          className="admin-dashboard-btn2"
+                        <FaWindowClose
+                          className="admin-dashboard-btn3"
                           variant="danger"
                           onClick={() => {
-                            if (values.BookID) {
+                            if (values.EbookID) {
                               let books = [...filteredAllBookList];
                               books[
-                                books.findIndex(x => x.BookID === values.BookID)
+                                books.findIndex(x => x.EbookID === values.EbookID)
                               ] = tempBook;
                               setFilteredAllBookList(books);
                             } else {
@@ -778,24 +777,20 @@ const DashboardAdmin = () => {
                               setFilteredAllBookList(books);
                             }
                           }}
-                        >
-
-                          CANCEL
-                        </Button>
+                        />
                       </td>
                     </tr>
                   );
                 else
                   return (
                     <tr>
-                      <td>{values.BookID}</td>
-                      <td>{values.BookName}</td>
-                      <td>{values.Author}</td>
-                      <td>{values.BookCategory}</td>
-                      <td>{values.Availability}</td>
+                      <td>{values.EbookID}</td>
+                      <td>{values.EbookImageUrl}</td>
+                      <td>{values.EbookName}</td>
+                      <td>{values.EbookUrl}</td>
                       <td className="book-management-actions">
-                        <Button
-                          className="admin-dashboard-btn2"
+                       <Button
+                          className="admin-dashboard-btn4"
                           onClick={() => {
                             let books = [...filteredAllBookList];
                             setTempBook(Object.assign({}, values));
@@ -807,16 +802,15 @@ const DashboardAdmin = () => {
                             filteredAllBookList.find(x => x.isEdit)
                           }
                         >
-                          UPDATE DETAILS
+                          <FaRegEdit/>
                         </Button>
                       </td>
                       <td className="book-management-actions">
                         <Button
-                          className="admin-dashboard-btn2"
-                          onClick={() => deleteBook(values.BookID)}
-                        >
-                          DELETE
-                        </Button>
+                          className="admin-dashboard-btn4"
+                          onClick={() => deleteBook(values.EbookID)}
+                        ><FaTrashAlt/>
+                          </Button>
                       </td>
                     </tr>
                   );
