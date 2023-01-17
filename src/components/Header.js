@@ -45,21 +45,18 @@ const Header = () => {
                 Andres Bonifacio Integrated School
               </p>
             </td>
-            <td>
-              <Navbar expand="lg">
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                  <Nav className="me-auto">
-                    <Nav.Link href="/">HOME</Nav.Link>
-                    {isLoggedIn ? <Nav.Link href="/e-books">E-BOOKS</Nav.Link> : null}
-                    {isLoggedIn ? <Nav.Link href={isAdmin ? '/admin-dashboard' : '/student-dashboard'}>DASHBOARD</Nav.Link> : <Nav.Link href="/signup">REGISTER </Nav.Link>}
-                    {isLoggedIn ? null : <Nav.Link href="/login">LOGIN</Nav.Link>}
-                    <Nav.Link href="https://abis.depedmandaluyong.org/about" target="_blank">ABOUT US</Nav.Link>
-                    <Nav.Link href="https://abis.depedmandaluyong.org/contact-us" target="_blank">CONTACT US</Nav.Link>
-                    {isLoggedIn ? <Nav.Link href="/" onClick={() => { localStorage.setItem('userData', JSON.stringify([])); setIsLoggedIn(false) }}>LOGOUT</Nav.Link> : null}
-                  </Nav>
-                </Navbar.Collapse>
-              </Navbar>
+          </tr>
+          <tr>
+          <td colSpan={2} className="header-nav">
+              <div className="topnav">
+                <a href="/">Home</a>
+                {isLoggedIn ? <a href="/e-books">E-BOOKS</a> : null}
+                {isLoggedIn ? <a href={isAdmin ? '/admin-dashboard' : '/student-dashboard'}>DASHBOARD</a> : <a href="/signup">REGISTER </a>}
+                {isLoggedIn ? null : <a href="/login">LOGIN</a>}
+                <a href="https://abis.depedmandaluyong.org/about" target="_blank">ABOUT US</a>
+                <a href="https://abis.depedmandaluyong.org/contact-us" target="_blank">CONTACT US</a>
+                {isLoggedIn ? <a href="/" onClick={() => { localStorage.setItem('userData', JSON.stringify([])); setIsLoggedIn(false) }}>LOGOUT</a> : null}
+              </div>
             </td>
           </tr>
         </tbody>
