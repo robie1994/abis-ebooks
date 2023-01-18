@@ -4,10 +4,10 @@ import Navbar from "react-bootstrap/Navbar";
 import { useState, useEffect } from "react";
 
 const Header = () => {
-  const [userData, setUserData] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isAdmin, setIsAdmin] = useState();
 
+  const [userData, setUserData] = useState([]);
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem('userData'));
     if (data) {

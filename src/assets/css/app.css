@@ -14,10 +14,24 @@ input[type=text] {
 }
 
 /* ============================== START OF HEADERS ============================== */
+.appHeader {
+    border: 2px solid #8b6132;
+    background-color: rgb(235, 235, 235);
+    font-weight: 900;
+    font-size: 12px;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.29;
+    letter-spacing: normal;
+    text-align: left;
+    color: #2e8adc;
+    position: fixed;
+    left: 0;
+    width: 100%;
+}
 
 .table-logo-header {
     width: 100%;
-    
 }
 
 .headerIcon {
@@ -53,9 +67,11 @@ input[type=text] {
     padding-top: 15px;
     font-weight: 600;
 }
-.header-nav{
+
+.header-nav {
     width: 100%;
 }
+
 .topnav {
     overflow: hidden;
     background-color: #333;
@@ -137,6 +153,7 @@ a {
 
 .appHomePage {
     width: 100%;
+    padding-top: 200px;
 }
 
 .home-main-content {
@@ -232,13 +249,11 @@ a {
 .signup-page {
     height: 100%;
     width: 100%;
-    background-color: aliceblue;
-    /* background-image: url('../images/abis-bg1.jpg'); */
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    position: fixed;
+    padding: 200px;
 }
 
 .abisLogo-signup {
@@ -261,6 +276,7 @@ a {
     width: 520px;
     border-radius: 20px;
     border: 2px solid black;
+    background-color: aliceblue;
 }
 
 .signup-image {
@@ -305,7 +321,7 @@ a {
     border-bottom-left-radius: 50px;
     padding: 25px;
     width: 500px;
-    background-color: aliceblue;
+
 }
 
 .tdRegisterBtn {
@@ -342,7 +358,7 @@ a {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    position: fixed;
+    padding: 200px;
 }
 
 .login-form {
@@ -457,8 +473,7 @@ a {
 /* USER PROFILE */
 .stdnt-dashboard-page {
     height: 100%;
-    margin: auto;
-    margin-top: 55px;
+    padding-top: 200px;
 }
 
 .stdnt-dashboard-form {
@@ -724,8 +739,7 @@ a {
 
 /* START OF E-BOOKS PAGE */
 .e-books-page {
-    padding: 20px;
-    height: 750px;
+    padding: 200px 20px 20px 20px;
 }
 
 .search-ebook-wrapper {
@@ -745,8 +759,6 @@ a {
 .ebooks-table {
     margin-top: 20px;
     height: 100%;
-    /* width: 100%; */
-    /* margin: auto; */
 }
 
 .ebook-td {
@@ -767,7 +779,8 @@ a {
     width: 200px;
     height: 200px;
 }
-.td-searched-cover{
+
+.td-searched-cover {
     margin: auto;
     text-align: center;
 }
@@ -775,14 +788,17 @@ a {
 .ebook-pagination-wrapper {
     width: 100%;
 }
-.searched-title{
+
+.searched-title {
     padding: 25px;
     font-size: larger;
 }
-.search-btn{
+
+.search-btn {
     color: blue;
     cursor: pointer;
 }
+
 .search-ebook-modal {
     width: 800px;
     max-width: 800px;
@@ -791,10 +807,10 @@ a {
     border-radius: 20px;
 }
 
-.manage-book-request-table {
-    width: 100%;
-}
 /* END OF E-BOOKS PAGE */
+
+
+/* START OF ADMIN DASHBOARD */
 .request-borrow-book-modal {
     width: 1198px;
     max-width: 1198px;
@@ -831,29 +847,48 @@ a {
 }
 
 .admin-dashboard-page {
-    max-width: 1430px;
-    height: 1000px;
-    margin: auto;
-    padding: 10px 0 25px;
+    padding: 200px 20px 20px 20px;
 }
 
-.admin-dashboard-form {
-    min-width: 1430px;
+/* .admin-dashboard-form {
     height: 600px;
     border: 1px solid #8b6132;
     border-radius: 4px;
+} */
+.admin-dashboard-form table{
+    width: 100%;
     padding: 25px;
 }
-
 .loggedin-as-admin {
     border: 1px solid #8b6132;
     padding: 5px 15px;
     background-color: rgb(235, 235, 235);
 }
 
+.admin-dashboard-panel{
+    width: 20%;
+    border: 2px solid black;
+
+}
+.admin-dashboard-panel-wrapper{
+    padding: 25px;
+}
+.button-wrapper{
+    padding: 25px;
+}
 .div-admin-dashboard {
     margin-top: 15px;
     text-align: center;
+}
+
+.admin-dashboard-content{
+    width: 80%;
+    border: 2px solid black;
+}
+.admin-dashboard-content-wrapper{
+    padding: 25px;
+    overflow: auto;
+    height: 650px;
 }
 
 .table-admin-dashboard {
@@ -886,8 +921,8 @@ a {
 }
 
 .admin-dashboard-icons {
-    width: 120;
-    height: 90px;
+    width: 220px;
+    height: 190px;
     padding: 5px;
 }
 
@@ -1050,9 +1085,20 @@ button:focus::after {
 }
 
 .add-book {
-    margin-left: 15px;
+    border: 2px solid black;
+    color: black;
+    background-color:rgb(235, 235, 235);
+    margin-left: 0;
+    padding: 5px 25px 5px 5px;
+    margin-bottom: 15px;
 }
-
+.add-book:hover {
+    color: black;
+    background-color:gainsboro ;
+}
+.add-ebook-img{
+    width: 40px;
+}
 .adminDashboard-modalHeader-search-label {
     padding: 0 10px 0 250px;
     font-size: 14px;
@@ -1069,5 +1115,23 @@ button:focus::after {
 .resetpassword {
     margin: 5px;
 }
-
+.search-student-tb{
+    margin-bottom: 15px;
+}
+.admin-dashboard-main-btn{
+    padding: 25px;
+    height: 100px;
+    width: 200px;
+    border: 2px solid black;
+    background-color:rgb(235, 235, 235);
+    color: black;
+}
+.admin-dashboard-main-btn:hover {
+    color: black;
+    background-color:gainsboro ;
+}
+.admin-dashboard-page th{
+    background-color: #333;
+    color: #f2f2f2;
+}
 /* ==== END OF APP CONTENT ==== */

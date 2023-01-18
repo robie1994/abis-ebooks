@@ -1,9 +1,21 @@
 import { useNavigate } from "react-router-dom";
 import rightImage from "../assets/images/abis-bg1.jpg";
 import rightImage2 from "../assets/images/abis-bg2.jpg";
+import { useState, useEffect } from "react";
 
 const Home = () => {
   const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const data = JSON.parse(localStorage.getItem('userData'));
+    if (data) {
+      if (data.StudID || data.username) {
+        setIsLoggedIn(true);
+      }
+    }
+
+  }, []);
 
   return (
     <div className="appHomePage">
@@ -35,9 +47,11 @@ const Home = () => {
                     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                   </p>
 
+                  {!isLoggedIn ? 
                   <div className="align-center home-signup-btn" onClick={() => navigate('/signup')}>
                   Sign Up
-                  </div>
+                  </div> : null}
+                  
                 </div>
               </td>
             </tr>
