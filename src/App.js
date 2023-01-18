@@ -23,7 +23,7 @@ const App = () => {
           <Route path="/e-books" element={<EBooksPage />} />
         </Routes>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

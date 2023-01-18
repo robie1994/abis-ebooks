@@ -21,13 +21,13 @@ const EBooksPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const data = JSON.parse(localStorage.getItem('userData'));
-    if (data && data.StudID) {
-      setUserData(data);
-    }
-    else {
-      navigate('/admin-dashboard')
-    }
+    // const data = JSON.parse(localStorage.getItem('userData'));
+    // if (data && data.StudID) {
+    //   setUserData(data);
+    // }
+    // else {
+    //   navigate('/admin-dashboard')
+    // }
     getAllBooks();
   }, []);
 
