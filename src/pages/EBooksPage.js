@@ -77,6 +77,15 @@ const EBooksPage = () => {
       setFilteredAllBookList([]);
     }
   }
+
+  // RECORD LOGS
+  const recordLogs = (book) => {
+    axios
+    .post("http://localhost/api-abis-ls/ebook-reading-logs.php", {
+      "ebookid": book.EbookID,
+      "ebookname": book.EbookName
+    })
+  }
   return (
     <div className="e-books-page">
       <div className="search-ebook-wrapper">
@@ -93,7 +102,7 @@ const EBooksPage = () => {
                     <div className="individual-ebook-wrapper">
                       <img className="ebook-cover-image" id={'book_' + values.EbookID} src={values.EbookImageUrl} alt="" onError={() => handleImageError('book_' + values.EbookID)} />
                       <br /><br />
-                      <Button onClick={() => window.open(values.EbookUrl, '_blank')} >Read Online</Button><br /><br />
+                      <Button onClick={() =>{ recordLogs(values); window.open(values.EbookUrl, '_blank')}} >Read Online</Button><br /><br />
                       {values.EbookName.length > 50 ? values.EbookName.substr(1, 50) + '...' : values.EbookName}
                     </div>
                   </td>)
@@ -124,7 +133,7 @@ const EBooksPage = () => {
 
       <Modal
         show={showSearchedBook}
-        onHide={() => {setShowSearchedBook(false); setFilteredAllBookList([])}}
+        onHide={() => {setShowSearchedBook(false)}}
         contentClassName="search-ebook-modal"
         dialogClassName="search-ebook-modal"
       >
@@ -141,23 +150,23 @@ const EBooksPage = () => {
               </tr>
             </thead>
             <tbody>
-              {filteredAllBookList.map(values => {
-                  <tr>
-                    <td>
-                      <div className="td-searched-cover">
-                        <img className="ebook-cover-image" id={'book_' + values.EbookID} src={values.EbookImageUrl} alt="" onError={() => handleImageError('book_' + values.EbookID)} />
-                      <br/>
-                      <br/>
-                      <Button onClick={() => window.open(values.EbookUrl, '_blank')} >Read Online</Button>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="searched-title">
-                        {values.EbookName.length > 150 ? values.EbookName.substr(1, 150) + '...' : values.EbookName}
-                      </div>
-                    </td>
-                  </tr>
-              })}
+              {filteredAllBookList.map(values => (
+                <tr>
+                <td>
+                  <div className="td-searched-cover">
+                    <img className="ebook-cover-image" id={'book_' + values.EbookID} src={values.EbookImageUrl} alt="" onError={() => handleImageError('book_' + values.EbookID)} />
+                  <br/>
+                  <br/>
+                  <Button onClick={() =>{ recordLogs(values); window.open(values.EbookUrl, '_blank')}} >Read Online</Button>
+                  </div>
+                </td>
+                <td>
+                  <div className="searched-title">
+                    {values.EbookName.length > 150 ? values.EbookName.substr(1, 150) + '...' : values.EbookName}
+                  </div>
+                </td>
+              </tr>
+              ))}
             </tbody>
           </Table>
         ) : 

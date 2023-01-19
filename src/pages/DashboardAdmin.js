@@ -1,9 +1,9 @@
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import addEbook from "../assets/images/add-book.png";
-import manageBooks from "../assets/images/manage-books.png";
-import monthlyReport from "../assets/images/monthly-report.png";
-import manageBookRequest from "../assets/images/manage-book-request.png";
+import booksReadIon from "../assets/images/books-read-icon.png";
+import registeredStudentsIcon from "../assets/images/students-list.png";
+import eBooksRecordIcon from "../assets/images/books-list-icon.png";
 import pending from "../assets/images/pending.png";
 import studentsList from "../assets/images/student-list.png";
 import Modal from "react-bootstrap/Modal";
@@ -151,7 +151,7 @@ const DashboardAdmin = () => {
     })
       .then(res => {
         if (res.data.status === false) setAllBookList([]);
-        else {setAllBookList(res.data); setFilteredAllBookList(res.data);}
+        else { setAllBookList(res.data); setFilteredAllBookList(res.data); }
       })
       .catch(err => {
         console.log(err);
@@ -213,6 +213,36 @@ const DashboardAdmin = () => {
         console.log(err);
       });
   };
+
+  const [allLogs, setAllLogs] = useState([]);
+  const getAllLogs = () => {
+    axios({
+      url: "http://localhost/api-abis-ls/ebooks-get-all-reading-logs.php",
+      method: "get"
+    })
+      .then(res => {
+        if (res.data.status === false) setAllLogs([]);
+        else setAllLogs(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+  const [topFiveLogs, setTopFiveLogs] = useState([]);
+  const getTopFiveLogs = () => {
+    axios({
+      url: "http://localhost/api-abis-ls/ebooks-get-reading-logs.php",
+      method: "get"
+    })
+      .then(res => {
+        if (res.data.status === false) setTopFiveLogs([]);
+        else setTopFiveLogs(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
   useEffect(() => {
     checkIfAdmin();
     getAllBooks();
@@ -221,6 +251,8 @@ const DashboardAdmin = () => {
     getAllApproved();
     getAllReturned();
     getReports();
+    getAllLogs();
+    getTopFiveLogs();
   }, []);
 
   const checkIfAdmin = () => {
@@ -350,10 +382,10 @@ const DashboardAdmin = () => {
                           <td><Button className="admin-dashboard-main-btn" onClick={() => { setShowBooksManagement(false); setShowRegisteredStudents(false); setShowDashboardContent(true) }}>Dashboard</Button></td>
                         </tr>
                         <tr>
-                          <td><br/><Button className="admin-dashboard-main-btn" onClick={() => { setShowBooksManagement(false); setShowDashboardContent(false); setShowRegisteredStudents(true); setFilteredStudentList(allStudents); }}>Registered Students</Button></td>
+                          <td><br /><Button className="admin-dashboard-main-btn" onClick={() => { setShowBooksManagement(false); setShowDashboardContent(false); setShowRegisteredStudents(true); setFilteredStudentList(allStudents); }}>Registered Students</Button></td>
                         </tr>
                         <tr>
-                          <td><br/><Button className="admin-dashboard-main-btn" onClick={() => { setShowRegisteredStudents(false); setShowDashboardContent(false); setShowBooksManagement(true); setFilteredAllBookList(allBookList) }}>Manage E-Books</Button><br/><br/><br/></td>
+                          <td><br /><Button className="admin-dashboard-main-btn" onClick={() => { setShowRegisteredStudents(false); setShowDashboardContent(false); setShowBooksManagement(true); setFilteredAllBookList(allBookList) }}>Manage E-Books</Button><br /><br /><br /></td>
                         </tr>
                       </div>
                     </tbody>
@@ -504,6 +536,8 @@ const DashboardAdmin = () => {
                       </Table>
                     </>)
                     /* ========================== END OF MANAGE E-BOOKS ========================== */
+
+
                     : showRegisteredStudents ?
                       (<>
                         {/* ========================== START OF REGISTERED STUDENTS ========================== */}
@@ -545,9 +579,130 @@ const DashboardAdmin = () => {
                       </>)
                       /* ========================== END OF MANAGE E-BOOKS ========================== */
 
+
+
                       : /* ========================== START OF DASHBOARD MAIN CONTENT ========================== */
                       (<>
-                        Dashboard
+                        <div className="statistics-wrapper">
+                          <div className="stats-header-wrapper">
+                            E-Books System Statistics
+                          </div>
+                          <div className="stats-content-wrapper">
+                            <table>
+                              <tbody>
+                                <tr>
+                                  <td>
+                                    <>Registered Accounts</><br />
+                                    <div className="stats"><img className="small-icons" src={registeredStudentsIcon} alt="" /><>{studentsList.length}</></div>
+                                  </td>
+                                  <td>
+                                    <>E-Book Records</><br />
+                                    <div className="stats"><img className="small-icons" src={eBooksRecordIcon} alt="" /><>{allBookList.length}</></div>
+                                  </td>
+                                  <td>
+                                    <>Total E-Books Read</><br />
+                                    <div className="stats"><img className="small-icons" src={booksReadIon} alt="" /><>{allLogs.length}</></div>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          <hr />
+                        </div>
+
+                        <div className="stats-header-wrapper">Top 5 Most Commonly Read E-Books</div>
+                        <div className="stats-content-wrapper">
+                          <table>
+                            <tbody>
+                              <tr>
+                                <td>
+                                  <table>
+                                    <thead>
+                                      <tr>
+                                        <td><b>Book Title</b></td>
+                                        <td className="align-center"><b>Times Read</b></td>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      {topFiveLogs.map(values => (
+                                        <tr>
+                                          <td>{values.EbookName}</td>
+                                          <td className="align-center">{values.xcount}</td>
+                                        </tr>
+                                      ))}
+                                    </tbody>
+                                  </table>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+
+                        <hr />
+                        {console.log(allBookList.slice(Math.max(allBookList.length - 5, 0)))}
+                        <div>
+                          <table>
+                            <tbody>
+                              <tr>
+                                <td>
+                                  <table>
+                                    <tbody>
+                                      <tr>
+                                        {/* START OF RECENTLY ADDED E-BOOKS */}
+                                        <td>
+                                          <table>
+                                            <thead>
+                                              <tr>
+                                                <td colSpan="2"><div className="stats-header-wrapper">Recently Added E-Books</div></td>
+                                              </tr>
+                                              <tr>
+                                                <td><b>Book ID</b></td>
+                                                <td><b>Book Title</b></td>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                              {allBookList.slice(Math.max(allBookList.length - 5, 0)).map(values => (
+                                                <tr>
+                                                  <td>{values.EbookID}</td>
+                                                  <td>{values.EbookName}</td>
+                                                </tr>
+                                              ))}
+                                            </tbody>
+                                          </table>
+                                        </td>
+                                        {/* END OF RECENTLY ADDED E-BOOKS */}
+
+                                        {/* START OF RECENTLY REGISTERED STUDENTS */}
+                                        <td>
+                                          <table>
+                                            <thead>
+                                              <tr>
+                                                <td colSpan="2"><div className="stats-header-wrapper">Recently Registered Students</div></td>
+                                              </tr>
+                                              <tr>
+                                                <td><b>Complete Name</b></td>
+                                                <td><b>Grade & Section</b></td>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                              {allStudents.slice(Math.max(allStudents.length - 5, 0)).map(values => (
+                                                <tr>
+                                                  <td>{values.FirstName + ' ' + values.MiddleName + ' ' + values.LastName}</td>
+                                                  <td>{values.GradeLevel + ' - ' + values.Section}</td>
+                                                </tr>
+                                              ))}
+                                            </tbody>
+                                          </table>
+                                        </td>
+                                        {/* END OF RECENTLY REGISTERED STUDENTS */}
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
                       </>)
                     /* ========================== END OF DASHBOARD MAIN CONTENT ========================== */
                   }
