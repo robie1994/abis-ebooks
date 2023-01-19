@@ -1134,4 +1134,26 @@ button:focus::after {
     background-color: #333;
     color: #f2f2f2;
 }
+.stats-header-wrapper{
+    padding: 5px;
+    background-color: #333;
+    color: #f2f2f2;
+    border: 1px solid gainsboro;
+}
+.stats-content-wrapper{
+    padding: 0px 15px 0px 15px;
+    background-color: whitesmoke;
+    border: 1px solid gainsboro;
+}
+.statistics-wrapper table{
+    margin-top: 15px;
+}
+.small-icons{
+    margin-right: 10px;
+    width: 40px;
+    height: 30px;
+}
+.stats{
+    font-size: 30px;
+}
 /* ==== END OF APP CONTENT ==== */
