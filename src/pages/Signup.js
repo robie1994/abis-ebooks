@@ -29,7 +29,7 @@ const Signup = () => {
     checkIfFormIsComplete();
   })
   const checkIfFormIsComplete = () => {
-    if (firstName.length && middleName.length && lastName.length && gender.length && address.length & city.length && gradeLevel.length && section.length && contactNumber.length && emailAddress.length && lrn.length && password.length) {
+    if (firstName.length && middleName.length && lastName.length && gender.length && address.length && city.length && gradeLevel.length && section.length && contactNumber.length && emailAddress.length && lrn.length && password.length) {
       setIsFormComplete(true);
     }
     else {
