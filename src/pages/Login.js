@@ -23,8 +23,9 @@ const Login = () => {
 
   const login = () => {
     axios({
-      url: "http://localhost/api-abis-ls/student-login.php",
+      url: "https://api-abis-ls.000webhostapp.com/student-login.php",
       method: "POST",
+      headers: {"Content-Type": "application/json"},
       data:
       {
         "lrn": lrn,
@@ -34,12 +35,13 @@ const Login = () => {
       .then(res => {
         if (res.data.Lrn) {
           localStorage.setItem('userData', JSON.stringify(res.data));
-          setTimeout(() => window.location.href = 'http://localhost:3000/student-dashboard', 500);
+          setTimeout(() => window.location.href = 'https://abis-ebook-1b8da.web.app/student-dashboard', 500);
         }
         else{
           axios({
-            url: "http://localhost/api-abis-ls/admin-login.php",
+            url: "https://api-abis-ls.000webhostapp.com/admin-login.php",
             method: "POST",
+            headers: {"Content-Type": "application/json"},
             data:
             {
               "username": lrn,
@@ -49,7 +51,7 @@ const Login = () => {
             .then(res => {
               if (res.data.username) {
                 localStorage.setItem('userData', JSON.stringify(res.data));
-                setTimeout(() => window.location.href = 'http://localhost:3000/admin-dashboard', 500);
+                setTimeout(() => window.location.href = 'https://abis-ebook-1b8da.web.app/admin-dashboard', 500);
               }
               else{
                 localStorage.setItem('userData', JSON.stringify(''));
