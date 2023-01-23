@@ -39,10 +39,9 @@ const Signup = () => {
   const registerStudent = () => {
     if (isFormComplete) {
       axios({
-        url: "http://localhost/api-abis-ls/student-create.php",
+        url: "https://api-abis-ls.000webhostapp.com/student-create.php",
         method: "POST",
-        data:
-        {
+        data : JSON.stringify({
           "firstname": firstName,
           "middlename": middleName,
           "lastname": lastName,
@@ -55,7 +54,7 @@ const Signup = () => {
           "email": emailAddress,
           "section": section,
           "contact": contactNumber,
-        }
+        })
       })
         .then(res => {
           if (res.data.status) {

@@ -59,7 +59,7 @@ const DashboardStudent = () => {
     const arr = [];
     const storageData = JSON.parse(localStorage.getItem('userData'));
     axios({
-      url: "http://localhost/api-abis-ls/students.php",
+      url: "https://api-abis-ls.000webhostapp.com/students.php",
       method: "get"
     })
       .then(res => {
@@ -88,7 +88,7 @@ const DashboardStudent = () => {
 
   const getAvailableBooksList = () => {
     axios({
-      url: "http://localhost/api-abis-ls/available-books.php",
+      url: "https://api-abis-ls.000webhostapp.com/available-books.php",
       method: "POST"
     })
       .then(res => {
@@ -107,11 +107,11 @@ const DashboardStudent = () => {
     let dateToday = newDate.getFullYear() + '-' + month + '-' + newDate.getDate();
     var arr = [];
     axios({
-      url: "http://localhost/api-abis-ls/student-all-current-borrowed-books.php",
+      url: "https://api-abis-ls.000webhostapp.com/student-all-current-borrowed-books.php",
       method: "POST",
-      data: {
+      data : JSON.stringify({
         "id": data.StudID
-      }
+      })
     })
       .then(res => {
         setStudentCurrentBorrowedBooks(res.data);
@@ -132,12 +132,11 @@ const DashboardStudent = () => {
   const getStudentPendingRequest = () => {
     const data = JSON.parse(localStorage.getItem('userData'));
     axios({
-      url: "http://localhost/api-abis-ls/pending-requests-by-student.php",
+      url: "https://api-abis-ls.000webhostapp.com/pending-requests-by-student.php",
       method: "POST",
-      data:
-      {
+      data : JSON.stringify({
         "StudID": data.StudID
-      }
+      })
     })
       .then(res => {
         setStudentPendingRequest(res.data);
@@ -149,12 +148,12 @@ const DashboardStudent = () => {
 
   const requestBook = (bookID) => {
     axios({
-      url: "http://localhost/api-abis-ls/request-book.php",
+      url: "https://api-abis-ls.000webhostapp.com/request-book.php",
       method: "POST",
-      data: {
+      data : JSON.stringify({
         "StudID": userData.StudID,
         "BookID": bookID
-      }
+      })
     })
       .then(res => {
         window.location.reload();
@@ -181,34 +180,35 @@ const DashboardStudent = () => {
   }
 
   const saveUpdate = () => {
-    axios({
-      url: "http://localhost/api-abis-ls/student-update.php",
-      method: "UPDATE",
-      data: {
-        "firstname": firstName,
-        "middlename": middleName,
-        "lastname": lastName,
-        "gender": gender,
-        "city": city,
-        "address": address,
-        "email": emailAddress,
-        "gradelevel": gradeLevel,
-        "section": section,
-        "contact": contactNumber,
-        "lrn": lrn,
-        "id": studentID
-      }
-    })
-      .then(res => {
-        console.log(res);
+    var data = JSON.stringify({
+      "firstname": firstName,
+      "middlename": middleName,
+      "lastname": lastName,
+      "gender": gender,
+      "city": city,
+      "address": address,
+      "email": emailAddress,
+      "gradelevel": gradeLevel,
+      "section": section,
+      "contact": contactNumber,
+      "lrn": lrn,
+      "id": studentID
+    });
+    
+    var config = {
+      method: 'post',
+      url: 'https://api-abis-ls.000webhostapp.com/student-update.php',
+      data : data
+    };
+    
+    axios(config).then(res => {
         setToggleUpdateProfile(false)
         axios({
-          url: "http://localhost/api-abis-ls/student-get-data.php",
+          url: "https://api-abis-ls.000webhostapp.com/student-get-data.php",
           method: "POST",
-          data:
-          {
+          data : JSON.stringify({
             "lrn": lrn,
-          }
+          })
         })
           .then(res => {
             if (res.data.Lrn) {
@@ -229,12 +229,12 @@ const DashboardStudent = () => {
 
 const checkCurrentPassword = (e) => {
   axios({
-    url: "http://localhost/api-abis-ls/student-check-current-password.php",
+    url: "https://api-abis-ls.000webhostapp.com/student-check-current-password.php",
     method: "POST",
-    data: {
+    data : JSON.stringify({
       "lrn": userData.Lrn,
       "password": e.target.value
-    }
+    })
   })
     .then(res => {
       if(res.data === "Current Password Matched") {
@@ -250,22 +250,21 @@ const checkCurrentPassword = (e) => {
 
 const changePassword = () => {
   axios({
-    url: "http://localhost/api-abis-ls/student-change-password.php",
-    method: "UPDATE",
-    data: {
+    url: "https://api-abis-ls.000webhostapp.com/student-change-password.php",
+    method: "post",
+    data : JSON.stringify({
       "password": newPassword,
       "id": studentID
-    }
+    })
   })
     .then(res => {
       setToggleUpdateProfile(false)
       axios({
-        url: "http://localhost/api-abis-ls/student-get-data.php",
+        url: "https://api-abis-ls.000webhostapp.com/student-get-data.php",
         method: "POST",
-        data:
-        {
+        data : JSON.stringify({
           "lrn": lrn,
-        }
+        })
       })
         .then(res => {
           if (res.data.Lrn) {
