@@ -34,8 +34,9 @@ const EBooksPage = () => {
   const [allBookList, setAllBookList] = useState([]);
   const getAllBooks = () => {
     axios({
-      url: "http://localhost/api-abis-ls/ebooks.php",
-      method: "get"
+      url: "https://api-abis-ls.000webhostapp.com/ebooks.php",
+      method: "get",
+      headers: {"Content-Type": "application/json"}
     })
       .then(res => {
         if (res.data.status === false) setAllBookList([]);
@@ -81,10 +82,11 @@ const EBooksPage = () => {
   // RECORD LOGS
   const recordLogs = (book) => {
     axios
-    .post("http://localhost/api-abis-ls/ebook-reading-logs.php", {
+    .post("https://api-abis-ls.000webhostapp.com/ebook-reading-logs.php", {
       "ebookid": book.EbookID,
       "ebookname": book.EbookName
-    })
+    },
+    {headers: {"Content-Type": "application/json"}})
   }
   return (
     <div className="e-books-page">

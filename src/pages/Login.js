@@ -23,8 +23,9 @@ const Login = () => {
 
   const login = () => {
     axios({
-      url: "http://localhost/api-abis-ls/student-login.php",
+      url: "https://api-abis-ls.000webhostapp.com/student-login.php",
       method: "POST",
+      headers: {"Content-Type": "application/json"},
       data:
       {
         "lrn": lrn,
@@ -38,8 +39,9 @@ const Login = () => {
         }
         else{
           axios({
-            url: "http://localhost/api-abis-ls/admin-login.php",
+            url: "https://api-abis-ls.000webhostapp.com/admin-login.php",
             method: "POST",
+            headers: {"Content-Type": "application/json"},
             data:
             {
               "username": lrn,
