@@ -59,9 +59,8 @@ const DashboardStudent = () => {
     const arr = [];
     const storageData = JSON.parse(localStorage.getItem('userData'));
     axios({
-      url: "https://api-abis-ls.000webhostapp.com/students.php",
-      method: "get",
-      headers: {"Content-Type": "application/json"}
+      url: "http://localhost/api-abis-ls/students.php",
+      method: "get"
     })
       .then(res => {
         if (res.data.status === false) setOtherStudents([]);
@@ -89,9 +88,8 @@ const DashboardStudent = () => {
 
   const getAvailableBooksList = () => {
     axios({
-      url: "https://api-abis-ls.000webhostapp.com/available-books.php",
-      method: "POST",
-      headers: {"Content-Type": "application/json"}
+      url: "http://localhost/api-abis-ls/available-books.php",
+      method: "POST"
     })
       .then(res => {
         setAvailableBookList(res.data);
@@ -109,9 +107,8 @@ const DashboardStudent = () => {
     let dateToday = newDate.getFullYear() + '-' + month + '-' + newDate.getDate();
     var arr = [];
     axios({
-      url: "https://api-abis-ls.000webhostapp.com/student-all-current-borrowed-books.php",
+      url: "http://localhost/api-abis-ls/student-all-current-borrowed-books.php",
       method: "POST",
-      headers: {"Content-Type": "application/json"},
       data: {
         "id": data.StudID
       }
@@ -135,9 +132,8 @@ const DashboardStudent = () => {
   const getStudentPendingRequest = () => {
     const data = JSON.parse(localStorage.getItem('userData'));
     axios({
-      url: "https://api-abis-ls.000webhostapp.com/pending-requests-by-student.php",
+      url: "http://localhost/api-abis-ls/pending-requests-by-student.php",
       method: "POST",
-      headers: {"Content-Type": "application/json"},
       data:
       {
         "StudID": data.StudID
@@ -153,9 +149,8 @@ const DashboardStudent = () => {
 
   const requestBook = (bookID) => {
     axios({
-      url: "https://api-abis-ls.000webhostapp.com/request-book.php",
+      url: "http://localhost/api-abis-ls/request-book.php",
       method: "POST",
-      headers: {"Content-Type": "application/json"},
       data: {
         "StudID": userData.StudID,
         "BookID": bookID
@@ -187,9 +182,8 @@ const DashboardStudent = () => {
 
   const saveUpdate = () => {
     axios({
-      url: "https://api-abis-ls.000webhostapp.com/student-update.php",
+      url: "http://localhost/api-abis-ls/student-update.php",
       method: "UPDATE",
-      headers: {"Content-Type": "application/json"},
       data: {
         "firstname": firstName,
         "middlename": middleName,
@@ -209,9 +203,8 @@ const DashboardStudent = () => {
         console.log(res);
         setToggleUpdateProfile(false)
         axios({
-          url: "https://api-abis-ls.000webhostapp.com/student-get-data.php",
+          url: "http://localhost/api-abis-ls/student-get-data.php",
           method: "POST",
-          headers: {"Content-Type": "application/json"},
           data:
           {
             "lrn": lrn,
@@ -236,9 +229,8 @@ const DashboardStudent = () => {
 
 const checkCurrentPassword = (e) => {
   axios({
-    url: "https://api-abis-ls.000webhostapp.com/student-check-current-password.php",
+    url: "http://localhost/api-abis-ls/student-check-current-password.php",
     method: "POST",
-    headers: {"Content-Type": "application/json"},
     data: {
       "lrn": userData.Lrn,
       "password": e.target.value
@@ -258,9 +250,8 @@ const checkCurrentPassword = (e) => {
 
 const changePassword = () => {
   axios({
-    url: "https://api-abis-ls.000webhostapp.com/student-change-password.php",
+    url: "http://localhost/api-abis-ls/student-change-password.php",
     method: "UPDATE",
-    headers: {"Content-Type": "application/json"},
     data: {
       "password": newPassword,
       "id": studentID
@@ -269,9 +260,8 @@ const changePassword = () => {
     .then(res => {
       setToggleUpdateProfile(false)
       axios({
-        url: "https://api-abis-ls.000webhostapp.com/student-get-data.php",
+        url: "http://localhost/api-abis-ls/student-get-data.php",
         method: "POST",
-        headers: {"Content-Type": "application/json"},
         data:
         {
           "lrn": lrn,

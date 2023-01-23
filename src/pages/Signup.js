@@ -39,9 +39,8 @@ const Signup = () => {
   const registerStudent = () => {
     if (isFormComplete) {
       axios({
-        url: "https://api-abis-ls.000webhostapp.com/student-create.php",
+        url: "http://localhost/api-abis-ls/student-create.php",
         method: "POST",
-        headers: {"Content-Type": "application/json"},
         data:
         {
           "firstname": firstName,
