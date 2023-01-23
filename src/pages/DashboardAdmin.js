@@ -87,9 +87,8 @@ const DashboardAdmin = () => {
     let students = [];
     let labels = [];
     axios({
-      url: "https://api-abis-ls.000webhostapp.com/transaction-reports.php",
-      method: "get",
-      headers: {"Content-Type": "application/json"}
+      url: "http://localhost/api-abis-ls/transaction-reports.php",
+      method: "get"
     })
       .then(res => {
         transactions = res.data;
@@ -104,9 +103,8 @@ const DashboardAdmin = () => {
         console.log(err);
       });
     axios({
-      url: "https://api-abis-ls.000webhostapp.com/student-reports.php",
-      method: "get",
-      headers: {"Content-Type": "application/json"}
+      url: "http://localhost/api-abis-ls/student-reports.php",
+      method: "get"
     })
       .then(res => {
         var dates = res.data.map(values => {
@@ -148,9 +146,8 @@ const DashboardAdmin = () => {
   };
   const getAllBooks = () => {
     axios({
-      url: "https://api-abis-ls.000webhostapp.com/ebooks.php",
-      method: "get",
-      headers: {"Content-Type": "application/json"}
+      url: "http://localhost/api-abis-ls/ebooks.php",
+      method: "get"
     })
       .then(res => {
         if (res.data.status === false) setAllBookList([]);
@@ -163,9 +160,8 @@ const DashboardAdmin = () => {
   const [allPending, setAllPending] = useState([]);
   const getAllPending = () => {
     axios({
-      url: "https://api-abis-ls.000webhostapp.com/pending-requests.php",
-      method: "get",
-      headers: {"Content-Type": "application/json"}
+      url: "http://localhost/api-abis-ls/pending-requests.php",
+      method: "get"
     })
       .then(res => {
         if (res.data.status === false) setAllPending([]);
@@ -178,9 +174,8 @@ const DashboardAdmin = () => {
   const [allApproved, setAllApproved] = useState([]);
   const getAllApproved = () => {
     axios({
-      url: "https://api-abis-ls.000webhostapp.com/approved-requests.php",
-      method: "get",
-      headers: {"Content-Type": "application/json"}
+      url: "http://localhost/api-abis-ls/approved-requests.php",
+      method: "get"
     })
       .then(res => {
         if (res.data.status === false) setAllApproved([]);
@@ -193,9 +188,8 @@ const DashboardAdmin = () => {
   const [allReturned, setAllReturned] = useState([]);
   const getAllReturned = () => {
     axios({
-      url: "https://api-abis-ls.000webhostapp.com/returned-requests.php",
-      method: "get",
-      headers: {"Content-Type": "application/json"}
+      url: "http://localhost/api-abis-ls/returned-requests.php",
+      method: "get"
     })
       .then(res => {
         if (res.data.status === false) setAllReturned([]);
@@ -208,9 +202,8 @@ const DashboardAdmin = () => {
   const [allStudents, setAllStudents] = useState([]);
   const getAllStudents = () => {
     axios({
-      url: "https://api-abis-ls.000webhostapp.com/students.php",
-      method: "get",
-      headers: {"Content-Type": "application/json"}
+      url: "http://localhost/api-abis-ls/students.php",
+      method: "get"
     })
       .then(res => {
         if (res.data.status === false) setAllStudents([]);
@@ -224,9 +217,8 @@ const DashboardAdmin = () => {
   const [allLogs, setAllLogs] = useState([]);
   const getAllLogs = () => {
     axios({
-      url: "https://api-abis-ls.000webhostapp.com/ebooks-get-all-reading-logs.php",
-      method: "get",
-      headers: {"Content-Type": "application/json"}
+      url: "http://localhost/api-abis-ls/ebooks-get-all-reading-logs.php",
+      method: "get"
     })
       .then(res => {
         if (res.data.status === false) setAllLogs([]);
@@ -240,9 +232,8 @@ const DashboardAdmin = () => {
   const [topFiveLogs, setTopFiveLogs] = useState([]);
   const getTopFiveLogs = () => {
     axios({
-      url: "https://api-abis-ls.000webhostapp.com/ebooks-get-reading-logs.php",
-      method: "get",
-      headers: {"Content-Type": "application/json"}
+      url: "http://localhost/api-abis-ls/ebooks-get-reading-logs.php",
+      method: "get"
     })
       .then(res => {
         if (res.data.status === false) setTopFiveLogs([]);
@@ -274,12 +265,12 @@ const DashboardAdmin = () => {
     let book = allBookList.find(x => x.EbookID === id);
     if (window.confirm("Do you really want to update book : " + id + "?")) {
       axios
-        .post("https://api-abis-ls.000webhostapp.com/ebook-update.php", {
+        .post("http://localhost/api-abis-ls/ebook-update.php", {
           id,
           ebookname: book.EbookName,
           ebookurl: book.EbookUrl,
           imageurl: book.EbookImageUrl
-        },{headers: {"Content-Type": "application/json"}})
+        })
         .then(() => {
           getAllBooks();
         });
@@ -288,12 +279,11 @@ const DashboardAdmin = () => {
   const createBook = book => {
     if (window.confirm("Do you really want to create book : ?")) {
       axios
-        .post("https://api-abis-ls.000webhostapp.com/ebook-create.php", {
+        .post("http://localhost/api-abis-ls/ebook-create.php", {
           ebookname: book.EbookName,
           ebookurl: book.EbookUrl,
           imageurl: book.EbookImageUrl
-        },
-        {headers: {"Content-Type": "application/json"}})
+        })
         .then(() => {
           getAllBooks();
         });
@@ -304,10 +294,9 @@ const DashboardAdmin = () => {
       window.confirm("Do you really want to delete this book : " + id + "?")
     ) {
       axios
-        .post("https://api-abis-ls.000webhostapp.com/ebook-delete.php", {
+        .post("http://localhost/api-abis-ls/ebook-delete.php", {
           id
-        },
-        {headers: {"Content-Type": "application/json"}})
+        })
         .then(() => {
           getAllBooks();
         });
@@ -358,9 +347,8 @@ const DashboardAdmin = () => {
 
   const resetPassword = () => {
     axios({
-      url: "https://api-abis-ls.000webhostapp.com/student-change-password.php",
+      url: "http://localhost/api-abis-ls/student-change-password.php",
       method: "UPDATE",
-      headers: {"Content-Type": "application/json"},
       data: {
         "password": selectedStudent.LastName.toLowerCase() + '_' + selectedStudent.Lrn,
         "id": selectedStudent.StudID
