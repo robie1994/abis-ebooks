@@ -22,50 +22,52 @@ const Login = () => {
   }, [])
 
   const login = () => {
-    axios({
-      url: "http://localhost/api-abis-ls/student-login.php",
-      method: "POST",
-      data:
-      {
+    var config = {
+      method: 'post',
+      url: 'https://api-abis-ls.000webhostapp.com/student-login.php',
+      data : JSON.stringify({
         "lrn": lrn,
         "password": password
+      })
+    };
+    
+    var config2 = {
+      method: 'post',
+      url: 'https://api-abis-ls.000webhostapp.com/admin-login.php',
+      data : JSON.stringify({
+        "username": lrn,
+        "password": password
+      })
+    };
+
+    axios(config)
+    .then(res => {
+      if (res.data.Lrn) {
+        localStorage.setItem('userData', JSON.stringify(res.data));
+        setTimeout(() => window.location.href = 'https://f8iqh3-3000.preview.csb.app/student-dashboard', 500);
       }
-    })
-      .then(res => {
-        if (res.data.Lrn) {
-          localStorage.setItem('userData', JSON.stringify(res.data));
-          setTimeout(() => window.location.href = 'http://localhost:3000/student-dashboard', 500);
-        }
-        else{
-          axios({
-            url: "http://localhost/api-abis-ls/admin-login.php",
-            method: "POST",
-            data:
-            {
-              "username": lrn,
-              "password": password
+      else{
+        axios(config2)
+          .then(res => {
+            if (res.data.username) {
+              localStorage.setItem('userData', JSON.stringify(res.data));
+              setTimeout(() => window.location.href = 'https://f8iqh3-3000.preview.csb.app/admin-dashboard', 500);
+            }
+            else{
+              localStorage.setItem('userData', JSON.stringify(''));
+              setLoginMessageHeader('Login Failed! ')
+               setLoginMessageBody('Please check the username/password that you entered.')
+              setShowLoginMessage(true)
             }
           })
-            .then(res => {
-              if (res.data.username) {
-                localStorage.setItem('userData', JSON.stringify(res.data));
-                setTimeout(() => window.location.href = 'http://localhost:3000/admin-dashboard', 500);
-              }
-              else{
-                localStorage.setItem('userData', JSON.stringify(''));
-                setLoginMessageHeader('Login Failed! ')
-                 setLoginMessageBody('Please check the username/password that you entered.')
-                setShowLoginMessage(true)
-              }
-            })
-            .catch(err => {
-              alert(err);
-            });
-        }
-      })
-      .catch(err => {
-        alert(err);
-      });
+          .catch(err => {
+            alert(err);
+          });
+      }
+    })
+    .catch(err => {
+      alert(err);
+    });
   }
 
   const [isCaptchaVerified, setIsCaptchaVerified] = useState(false);

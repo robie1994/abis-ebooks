@@ -21,20 +21,20 @@ const EBooksPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // const data = JSON.parse(localStorage.getItem('userData'));
-    // if (data && data.StudID) {
-    //   setUserData(data);
-    // }
-    // else {
-    //   navigate('/admin-dashboard')
-    // }
+    const data = JSON.parse(localStorage.getItem('userData'));
+    if (data && data.StudID) {
+      setUserData(data);
+    }
+    else {
+      navigate('/admin-dashboard')
+    }
     getAllBooks();
   }, []);
 
   const [allBookList, setAllBookList] = useState([]);
   const getAllBooks = () => {
     axios({
-      url: "http://localhost/api-abis-ls/ebooks.php",
+      url: "https://api-abis-ls.000webhostapp.com/ebooks.php",
       method: "get"
     })
       .then(res => {
@@ -80,11 +80,16 @@ const EBooksPage = () => {
 
   // RECORD LOGS
   const recordLogs = (book) => {
-    axios
-    .post("http://localhost/api-abis-ls/ebook-reading-logs.php", {
-      "ebookid": book.EbookID,
-      "ebookname": book.EbookName
-    })
+    var config = {
+      method: 'post',
+      url: 'https://api-abis-ls.000webhostapp.com/ebook-reading-logs.php',
+      data : JSON.stringify({
+        "ebookid": book.EbookID,
+        "ebookname": book.EbookName
+      })
+    };
+
+    axios(config);
   }
   return (
     <div className="e-books-page">

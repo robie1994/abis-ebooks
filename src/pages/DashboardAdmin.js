@@ -87,7 +87,7 @@ const DashboardAdmin = () => {
     let students = [];
     let labels = [];
     axios({
-      url: "http://localhost/api-abis-ls/transaction-reports.php",
+      url: "https://api-abis-ls.000webhostapp.com/transaction-reports.php",
       method: "get"
     })
       .then(res => {
@@ -103,7 +103,7 @@ const DashboardAdmin = () => {
         console.log(err);
       });
     axios({
-      url: "http://localhost/api-abis-ls/student-reports.php",
+      url: "https://api-abis-ls.000webhostapp.com/student-reports.php",
       method: "get"
     })
       .then(res => {
@@ -146,7 +146,7 @@ const DashboardAdmin = () => {
   };
   const getAllBooks = () => {
     axios({
-      url: "http://localhost/api-abis-ls/ebooks.php",
+      url: "https://api-abis-ls.000webhostapp.com/ebooks.php",
       method: "get"
     })
       .then(res => {
@@ -160,7 +160,7 @@ const DashboardAdmin = () => {
   const [allPending, setAllPending] = useState([]);
   const getAllPending = () => {
     axios({
-      url: "http://localhost/api-abis-ls/pending-requests.php",
+      url: "https://api-abis-ls.000webhostapp.com/pending-requests.php",
       method: "get"
     })
       .then(res => {
@@ -174,7 +174,7 @@ const DashboardAdmin = () => {
   const [allApproved, setAllApproved] = useState([]);
   const getAllApproved = () => {
     axios({
-      url: "http://localhost/api-abis-ls/approved-requests.php",
+      url: "https://api-abis-ls.000webhostapp.com/approved-requests.php",
       method: "get"
     })
       .then(res => {
@@ -188,7 +188,7 @@ const DashboardAdmin = () => {
   const [allReturned, setAllReturned] = useState([]);
   const getAllReturned = () => {
     axios({
-      url: "http://localhost/api-abis-ls/returned-requests.php",
+      url: "https://api-abis-ls.000webhostapp.com/returned-requests.php",
       method: "get"
     })
       .then(res => {
@@ -202,7 +202,7 @@ const DashboardAdmin = () => {
   const [allStudents, setAllStudents] = useState([]);
   const getAllStudents = () => {
     axios({
-      url: "http://localhost/api-abis-ls/students.php",
+      url: "https://api-abis-ls.000webhostapp.com/students.php",
       method: "get"
     })
       .then(res => {
@@ -217,7 +217,7 @@ const DashboardAdmin = () => {
   const [allLogs, setAllLogs] = useState([]);
   const getAllLogs = () => {
     axios({
-      url: "http://localhost/api-abis-ls/ebooks-get-all-reading-logs.php",
+      url: "https://api-abis-ls.000webhostapp.com/ebooks-get-all-reading-logs.php",
       method: "get"
     })
       .then(res => {
@@ -232,7 +232,7 @@ const DashboardAdmin = () => {
   const [topFiveLogs, setTopFiveLogs] = useState([]);
   const getTopFiveLogs = () => {
     axios({
-      url: "http://localhost/api-abis-ls/ebooks-get-reading-logs.php",
+      url: "https://api-abis-ls.000webhostapp.com/ebooks-get-reading-logs.php",
       method: "get"
     })
       .then(res => {
@@ -264,39 +264,55 @@ const DashboardAdmin = () => {
   const updateBook = id => {
     let book = allBookList.find(x => x.EbookID === id);
     if (window.confirm("Do you really want to update book : " + id + "?")) {
-      axios
-        .post("http://localhost/api-abis-ls/ebook-update.php", {
-          id,
-          ebookname: book.EbookName,
-          ebookurl: book.EbookUrl,
-          imageurl: book.EbookImageUrl
+      axios({
+        url: "https://api-abis-ls.000webhostapp.com/ebook-update.php",
+        method: "POST",
+        data : JSON.stringify({
+          "id": id,
+            "ebookname": book.EbookName,
+            "ebookurl": book.EbookUrl,
+            "imageurl": book.EbookImageUrl
         })
-        .then(() => {
-          getAllBooks();
+      })
+      .then(() => {
+        getAllBooks();
+      })
+        .catch(err => {
+          console.log(err);
         });
     }
-  };
+  }
+
   const createBook = book => {
     if (window.confirm("Do you really want to create book : ?")) {
-      axios
-        .post("http://localhost/api-abis-ls/ebook-create.php", {
-          ebookname: book.EbookName,
-          ebookurl: book.EbookUrl,
-          imageurl: book.EbookImageUrl
+      axios({
+        url: "https://api-abis-ls.000webhostapp.com/ebook-create.php",
+        method: "POST",
+        data : JSON.stringify({
+          "ebookname": book.EbookName,
+          "ebookurl": book.EbookUrl,
+          "imageurl": book.EbookImageUrl
         })
-        .then(() => {
-          getAllBooks();
+      })
+      .then(() => {
+        getAllBooks();
+      })
+        .catch(err => {
+          console.log(err);
         });
     }
   };
   const deleteBook = id => {
-    if (
-      window.confirm("Do you really want to delete this book : " + id + "?")
-    ) {
-      axios
-        .post("http://localhost/api-abis-ls/ebook-delete.php", {
-          id
+    if (window.confirm("Do you really want to delete this book : " + id + "?")) {
+      var config = {
+        method: 'post',
+        url: 'https://api-abis-ls.000webhostapp.com/ebook-delete.php',
+        data : JSON.stringify({
+          "id": id
         })
+      };
+  
+      axios(config)
         .then(() => {
           getAllBooks();
         });
@@ -347,12 +363,12 @@ const DashboardAdmin = () => {
 
   const resetPassword = () => {
     axios({
-      url: "http://localhost/api-abis-ls/student-change-password.php",
-      method: "UPDATE",
-      data: {
+      url: "https://api-abis-ls.000webhostapp.com/student-change-password.php",
+      method: "post",
+      data : JSON.stringify({
         "password": selectedStudent.LastName.toLowerCase() + '_' + selectedStudent.Lrn,
         "id": selectedStudent.StudID
-      }
+      })
     }).then(res => {
       setShowResetPassword(false)
       setShowResetPasswordSuccessfull(true);
